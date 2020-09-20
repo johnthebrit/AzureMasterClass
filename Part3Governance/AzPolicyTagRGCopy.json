@@ -1,0 +1,18 @@
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "field": "tags.costCode",
+            "exists": "false"
+        },
+        "then": {
+            "effect": "append",
+            "details": [
+                {
+                    "field": "tags.costCode",
+                    "value": "[resourcegroup().tags.costCode]"
+                }
+            ]
+        }
+    }
+}
