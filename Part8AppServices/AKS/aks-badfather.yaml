@@ -1,0 +1,42 @@
+#https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-badfather-web1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: azure-badfather-web1
+  template:
+    metadata:
+      labels:
+        app: azure-badfather-web1
+    spec:
+      containers:
+      - name: azure-badfather-web1
+        image: savilltech.azurecr.io/images/badfather
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-badfather-web1
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout: "4"
+#    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+#    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "svc"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-badfather-web1
