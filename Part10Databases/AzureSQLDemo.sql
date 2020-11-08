@@ -23,3 +23,5 @@ REVERT;
 
 GRANT UNMASK TO AquaMan;
 REVOKE UNMASK TO AquaMan;
+
+CREATE USER AquaMan WITH PASSWORD = 'Somethingelse'
