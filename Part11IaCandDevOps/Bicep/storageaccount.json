@@ -21,7 +21,7 @@
       "apiVersion": "2019-06-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
-      "kind": "Storage",
+      "kind": "StorageV2",
       "sku": {
         "name": "[variables('storageSku')]"
       }

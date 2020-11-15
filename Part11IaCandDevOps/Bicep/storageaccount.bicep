@@ -6,7 +6,7 @@ var storageSku = 'Standard_LRS' // declare variable and assign value
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
     name: name
     location: location
-    kind: 'Storage'
+    kind:'StorageV2'
     sku: {
         name: storageSku // reference variable
     }

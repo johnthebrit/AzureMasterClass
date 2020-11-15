@@ -64,7 +64,7 @@ New-AzVM -Name johnvm -Credential (Get-Credential) -Verbose -WhatIf
 New-AzVM -Name johnvm -Credential (Get-Credential) -Image UbuntuLTS -Verbose -WhatIf
 
 #Deploy an ARM template
-New-AzResourceGroupDeployment -ResourceGroupName RG-IaCSample `
+New-AzResourceGroupDeployment -ResourceGroupName RG-IaCSamp42 `
     -TemplateFile "StorageAccount.json" `
     -TemplateParameterFile "StorageAccount.parameters.json"
 
@@ -87,8 +87,12 @@ az group create --location southcentralus --name testRG
 
 #To view the VM sizes available in a region (note the 2 dashes before location)
 az vm list-sizes --location eastus2
+az vm list-sizes --location eastus2 --output table
+
+az vm list -d --query "[?powerState=='VM running'].{Name:name, Region:location, ResourceGroup:resourceGroup, PowerState:powerState}" --output table
+
 #To quickly create a VM with many default values
 az vm create -n MyVm -g MyResourceGroup --image UbuntuLTS
 
 #Deploy an ARM template (@ for parameter means local file)
-az group deployment create --resource-group "RG-IaCSample" --template-file "StorageAccount.json" --parameters "@StorageAccount.parameters.json"
+az group deployment create --resource-group "RG-IaCSamp42" --template-file "StorageAccount.json" --parameters "@StorageAccount.parameters.json"

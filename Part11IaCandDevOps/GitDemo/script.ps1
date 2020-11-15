@@ -2,8 +2,8 @@
 
 Git --version  #(check healthy install)
 
-Git config --global user.name "John Savill"
-Git config --global user.email "john@savilltech.com"
+Git config --global user.name "Your Name"
+Git config --global user.email "your@email.com"
 Git config --global --list
 
 #copy in storage account arm template to subfolder ARMTemplates
@@ -90,14 +90,18 @@ cd ..
 echo "# storagetemplate" >> README.md
 git add README.md
 git commit -m "added readme"
-git remote add origin https://github.com/johnthebrit/storagetemplate.git
+git remote add origin https://github.com/youraccount/yourrepo.git
 git remote -v
-git push origin master #pushing to origin our master branch
+
+#either
+git push origin master #pushing to origin to remote master branch
+#or BETTER which also sets the remote as the upstream remote so can just to get pull in future
+git push -u origin master
 #will make you authenticate since doing push the first time
+
 git-graph
 git remote show origin
 
-git fetch origin #get any updates from remote
+git pull origin master #get any updates from remote
 
 #Note in github have the code download which gives clone url so anyone can copy
-#try changing the template from ZRS to GRS to LRS and note the object. declarative at work!
