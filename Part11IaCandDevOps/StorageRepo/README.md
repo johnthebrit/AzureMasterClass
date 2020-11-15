@@ -1,0 +1,1 @@
+# storagetemplate

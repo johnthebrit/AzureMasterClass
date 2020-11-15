@@ -1,0 +1,14 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "myPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/<sub>/resourceGroups/RG-SCUSA/providers/Microsoft.KeyVault/vaults/SavillVault"
+          },
+          "secretName": "SamplePassword"
+        }
+      }
+    }
+  }

@@ -32,8 +32,8 @@ az aks get-credentials --resource-group RG-AKS --name aks-ussc-cni1
 az aks get-credentials --resource-group RG-AKS-Kubenet --name aks-ussc-kubenet1
 
 #View service principal for cluster
-az aks show --resource-group RG-AKS-Kubenet --name aks-ussc-kubenet1 --query servicePrincipalProfile.clientId
-az ad sp show --id (az aks show --resource-group RG-AKS-Kubenet --name aks-ussc-kubenet1 --query servicePrincipalProfile.clientId)
+az aks show --resource-group RG-AKS --name aks-ussc-cni1 --query servicePrincipalProfile.clientId
+az ad sp show --id (az aks show --resource-group RG-AKS --name aks-ussc-cni1 --query servicePrincipalProfile.clientId)
 
 #Install kubectl then have to update path to include it
 az aks install-cli

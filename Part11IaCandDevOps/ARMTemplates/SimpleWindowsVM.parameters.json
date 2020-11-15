@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "southcentralus"
+    },
+    "vmName": {
+      "value": "demoVM1"
+    },
+    "virtualMachineAdminUserName": {
+      "value": "demoadmin"
+    },
+    "virtualMachineAdminPassword": {
+      "value": "Pa55wordPa55word"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_DS2_v2"
+    },
+    "virtualNetworkName": {
+      "value": "VNet-Infra-SCUS"
+    },
+    "subnetName": {
+      "value": "TestSub"
+    },
+    "virtualNetworkResourceGroup": {
+      "value": "RG-Infra-SCUS"
+    },
+    "domainAdminUserName": {
+      "value": "savilltech\\savadmin"
+    },
+    "domainAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/<sub>/resourceGroups/RG-Infra-SCUS/providers/Microsoft.KeyVault/vaults/SavKeyVault"
+        },
+        "secretName": "savadminpass"
+      }
+    },
+    "domainFQDN": {
+      "value": "savilltech.net"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+bicep build ./storageaccount.bicep
