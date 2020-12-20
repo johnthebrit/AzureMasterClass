@@ -12,14 +12,14 @@
             "Premium_LRS"
             ],
             "metadata": {
-            "description": "Storage Account type"
+              "description": "Storage Account type"
             }
         },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]",
             "metadata": {
-            "description": "Location for all resources."
+              "description": "Location for all resources."
             }
         }
     },
@@ -48,4 +48,4 @@
             "value": "[reference('linkedTemplate').outputs.storageAccountName.value]"
           }
     }
-  }
+}
