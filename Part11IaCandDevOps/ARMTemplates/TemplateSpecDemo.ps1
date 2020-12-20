@@ -1,5 +1,5 @@
 $GitBasePath = 'C:\Users\john\OneDrive\projects\GIT\AzureMasterClass\Part11IaCandDevOps\ARMTemplates'
-$RGName = '$RGName'
+$RGName = 'YOURRGNAMEHERE'
 
 #Create a new template spec
 New-AzTemplateSpec -Name Basic-Storage-Account -Version 1.0 -ResourceGroupName RG-TemplateSpecs -Location southcentralus `
@@ -17,6 +17,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $RGName -TemplateSpecId $id
 New-AzResourceGroupDeployment -ResourceGroupName $RGName -TemplateSpecId $id `
     -TemplateParameterFile "$GitBasePath\StorageAccount.parameters.json" `
     -WhatIf
+
+#Adding a new version
+New-AzTemplateSpec -Name Basic-Storage-Account -Version 1.1 -ResourceGroupName RG-TemplateSpecs -Location southcentralus `
+    -TemplateFile "$GitBasePath\StorageAccount.json"
+
 
 #Deploying a linked template today (need public accessible path)
 New-AzResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile "$GitBasePath\StorageAccountLinkedGitHub.json" `
