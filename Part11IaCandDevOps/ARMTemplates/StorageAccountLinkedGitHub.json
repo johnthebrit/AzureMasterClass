@@ -28,12 +28,13 @@
     "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2018-05-01",
           "name": "linkedTemplate",
           "properties": {
             "mode": "Incremental",
             "templateLink": {
-                "relativePath": "./StorageAccount.json"
+                "uri":"https://raw.githubusercontent.com/johnthebrit/AzureMasterClass/master/Part11IaCandDevOps/ARMTemplates/StorageAccount.json",
+                "contentVersion":"1.0.0.0"
             },
             "parameters": {
                 "StorageAccountType":{"value": "[parameters('storageAccountType')]"},

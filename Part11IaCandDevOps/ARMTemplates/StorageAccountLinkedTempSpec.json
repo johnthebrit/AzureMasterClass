@@ -27,13 +27,14 @@
     },
     "resources": [
         {
+          "name": "linkedTemplate",
           "type": "Microsoft.Resources/deployments",
           "apiVersion": "2020-06-01",
-          "name": "linkedTemplate",
           "properties": {
             "mode": "Incremental",
+
             "templateLink": {
-                "relativePath": "./StorageAccount.json"
+                "id": "[resourceId('RG-TemplateSpecs','Microsoft.Resources/templateSpecs/versions','Basic-Storage-Account','1.0')]"
             },
             "parameters": {
                 "StorageAccountType":{"value": "[parameters('storageAccountType')]"},
