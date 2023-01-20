@@ -1,0 +1,28 @@
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachineScaleSets'
+| join kind=inner (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| project VMMSName = name, RGName = resourceGroup, VMMSSKU = sku.name, VMMSCount = sku.capacity, SubName, SubID = subscriptionId, ResID = id
+
+
+#Link to scale action
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachineScaleSets'
+| extend lowerId = tolower(id)
+| join kind=inner (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| join kind=leftouter (Resources | where type=='microsoft.insights/autoscalesettings' | project ScaleName=tostring(properties.name),lowerId=tolower(tostring(properties.targetResourceUri))) on lowerId
+| project VMMSName = name, RGName = resourceGroup, VMMSSKU = sku.name, VMMSCount = sku.capacity, SubName, SubID = subscriptionId, ResID = id, ScaleName
+
+#Just scale actions
+Resources
+| where type=='microsoft.insights/autoscalesettings'
+| where properties.targetResourceUri contains 'virtualmachinescalesets'
+
+
+#With some information about the scale
+
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachineScaleSets'
+| extend lowerId = tolower(id)
+| join kind=inner (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| join kind=leftouter (Resources | where type=='microsoft.insights/autoscalesettings' | project ScaleName=tostring(properties.name), minCount=properties.profiles[0].capacity.minimum, maxCount=properties.profiles[0].capacity.maximum,lowerId=tolower(tostring(properties.targetResourceUri))) on lowerId
+| project VMMSName = name, RGName = resourceGroup, VMMSSKU = sku.name, VMMSCount = sku.capacity, SubName, SubID = subscriptionId, ResID = id, ScaleName, minCount, maxCount
