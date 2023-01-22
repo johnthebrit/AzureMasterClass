@@ -5,6 +5,7 @@ $authHeader = @{
 }
 
 #$subid = 'yoursubid'
+#$subid = (get-azcontext).subscription.id
 
 $r2 = Invoke-RestMethod -Uri https://management.azure.com/subscriptions/$subid/providers/Microsoft.Compute/locations/southcentralus/virtualMachines?api-version=2022-03-01 `
     -Method GET -Headers $authHeader

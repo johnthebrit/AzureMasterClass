@@ -4,7 +4,7 @@ Resources
 | project VMMSName = name, RGName = resourceGroup, VMMSSKU = sku.name, VMMSCount = sku.capacity, SubName, SubID = subscriptionId, ResID = id
 
 
-#Link to scale action
+#Link to scale actions
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachineScaleSets'
 | extend lowerId = tolower(id)
@@ -18,7 +18,7 @@ Resources
 | where properties.targetResourceUri contains 'virtualmachinescalesets'
 
 
-#With some information about the scale
+#With some information about the scale actions configured
 
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachineScaleSets'

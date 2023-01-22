@@ -1,4 +1,8 @@
-$VMSSResourceID = Get-AzVmss -VMScaleSetName 'VMSSFlex' | Select-Object -expandProperty Id
+$VMSSResource = Get-AzVmss -VMScaleSetName 'VMSSFlex'
+$VMSSResourceID =  $VMSSResource.Id
+
+$VMSSResource | Format-List
+$VMSSResource.VirtualMachineProfile #see the profile
 
 Start-AzVmss -VMScaleSetName 'VMSSFlex' -ResourceGroupName RG-VMSS
 
