@@ -1,4 +1,4 @@
-$VMSSResource = Get-AzVmss -VMScaleSetName 'VMSSFlex'
+$VMSSResource = Get-AzVmss -VMScaleSetName 'VMSSFlex' -ResourceGroupName RG-VMSS
 $VMSSResourceID =  $VMSSResource.Id
 
 $VMSSResource | Format-List
