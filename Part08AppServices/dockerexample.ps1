@@ -10,8 +10,17 @@ docker build -t badfather .
 
 #Apache image
 docker search httpd
+#look at top 10 tags if wanted specific version
+$results = (curl 'https://registry.hub.docker.com/v2/repositories/library/httpd/tags/'| convertfrom-json).results
+$results | select -ExpandProperty name
+
 docker pull httpd
+#OR
+#docker pull httpd:alpine3.17 #specific version based on Alpine for example
+
+docker image ls
 docker image history httpd
+docker image inspect https
 docker run -it httpd bash
 cd badfatherapache
 docker build -t badfather .
