@@ -1,0 +1,5 @@
+Create a 16 node.js app
+FTP up the files
+Bash shell into and move to site/wwwroot
+npm update
+restart the app service
