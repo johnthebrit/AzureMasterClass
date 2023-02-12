@@ -1,0 +1,27 @@
+[
+    {
+        "firstName": "Bruce",
+        "lastName": "Wayne",
+        "codename": "Batman",
+        "address": {
+            "city": "Gotham",
+            "country": "USA"
+        },
+        "powers": [
+            "money"
+        ]
+    },
+    {
+        "firstName": "Clark",
+        "lastName": "Kent",
+        "codename": "Superman",
+        "address": {
+            "city": "Metropolis",
+            "country": "USA"
+        },
+        "powers": [
+            "strength", "invulnerability","heat vision"
+        ],
+        "pets": "Krypto"
+    }
+]
