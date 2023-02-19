@@ -1,7 +1,7 @@
 
 # Repository for John Savill's Azure Master Class V2 #
 
-<a href="https://youtube.com/NTFAQGuy" rel="YouTube Channel">![On-Board to Azure](/Images/logosmall.png)</a>
+<a href="https://youtube.com/NTFAQGuy" rel="YouTube Channel">![On-Board to Azure](/Images/AzMCLogoSmall.png)</a>
 
 This is the repository for the materials related to the Azure Master Class
 
