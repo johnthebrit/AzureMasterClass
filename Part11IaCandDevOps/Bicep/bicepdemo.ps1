@@ -1,5 +1,5 @@
-$GitBasePath = 'C:\AzureMasterClass\Part11IaCandDevOps\Bicep'
-$RGName = 'RG-S024'
+$GitBasePath = 'C:\Users\john\OneDrive\projects\GIT\AzureMasterClass\Part11IaCandDevOps\Bicep'
+$RGName = 'RG-007007'
 
 New-AzResourceGroupDeployment -ResourceGroupName $RGName `
     -TemplateFile "$GitBasePath\StorageAccountwithContainer.json"
