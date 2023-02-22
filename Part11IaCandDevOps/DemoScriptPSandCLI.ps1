@@ -9,7 +9,16 @@ install-module azuread -Scope AllUsers -Force
 #Check version
 Get-Module az -ListAvailable
 
-Connect-AzAccount #login and will get refresh token persist between sessions
+#Update
+Update-Module az -Scope AllUsers
+#HOWEVER this may leave old versions around. I prefer to delete and just reinstall!
+#You can also install from MSI in which case upgrade via MSI
+
+
+Connect-AzAccount #login and will get refresh token persist between sessions. Use auth code flow
+#could also use device code flow, managed identity
+Connect-AzAccount -UseDeviceAuthentication #will get shown a code to enter via
+Connect-AzAccount -Identity
 
 get-azcontext -ListAvailable
 $contexts= get-azcontext -ListAvailable
@@ -19,7 +28,7 @@ $contexts[0] | rename-azcontext -TargetName "SavillTech Prod"
 
 Select-AzContext "SavillTech Prod"
 
-Get-AzContextAutosaveSetting
+Get-AzContextAutosaveSetting #metadata related to context saving
 
 Get-Command -Module Az.Compute
 Get-Command -Module Az.Compute -Verb New
@@ -32,8 +41,8 @@ Get-AzVM -status | ft name, powerstate -AutoSize
 Get-AzVM -status | where {$_.powerstate -ne "VM Running"}
 
 #Look at secrets
-(Get-AzKeyVaultSecret –VaultName 'SavKeyVault' `
-    -Name TestSecret).SecretValueText
+Get-AzKeyVaultSecret –VaultName 'SavillVaultRBAC' `
+    -Name Secret2 -AsPlainText
 
 #Look at all extension images
 Get-AzVmImagePublisher -Location "southcentralus" | Get-AzVMExtensionImageType | Get-AzVMExtensionImage | Select Type, Version
@@ -71,6 +80,20 @@ New-AzResourceGroupDeployment -ResourceGroupName RG-IaCSamp42 `
 
 #CLI Use
 az login
+
+az login --use-device-code
+az login --identity
+
+az version
+
+#az cli can detect new versions and offer automatic upgrade
+az upgrade #manually upgrade
+
+#set autoupdate
+az config set auto-upgrade.enable=yes
+az config set auto-upgrade.prompt=no
+
+az config get
 
 az account list
 
