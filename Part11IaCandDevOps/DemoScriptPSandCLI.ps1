@@ -4,7 +4,6 @@
 install-module az -Scope AllUsers -Force
 install-module az.resourcegraph -Scope AllUsers -Force
 install-module microsoft.graph -Scope AllUsers -Force
-install-module azuread -Scope AllUsers -Force
 
 #Check version
 Get-Module az -ListAvailable
