@@ -37,7 +37,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $RGName `
 
 #Deploy a linked template that is stored in blob (via a SAS since no public anonymous)
 New-AzResourceGroupDeployment -ResourceGroupName $RGName `
-    -TemplateFile "$GitBasePath\StorageAccountLinked.json" `
+    -TemplateFile "<URI>\StorageAccountLinked.json" `
     -StorageAccountType 'Standard_LRS'
 
 #Looking at a secret
