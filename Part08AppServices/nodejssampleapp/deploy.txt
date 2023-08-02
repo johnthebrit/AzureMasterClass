@@ -1,5 +1,18 @@
 Create a 16 node.js app
-FTP up the files
-Bash shell into and move to site/wwwroot
+
+Create zip of it
+Compress-Archive -Path * -DestinationPath app.zip
+tar -czvf (archive name).tar.gz (pathtofile)
+
+Deploy to the app service
+az webapp deploy --resource-group RG-BadFatherAppSvc --name badfatherwestus --src-path app.zip
+Or to copy up entire tar
+az webapp deploy --resource-group RG-BadFatherAppSvc --name savillbadfatherwst --src-path app.tar.gz --type static --target-path app.tar.gz
+Expand
+tar -xzvf app.tar.gz
+in wwwroot - mv * ../
+cd ..
+rmdir wwwroot
+
 npm update
 restart the app service
