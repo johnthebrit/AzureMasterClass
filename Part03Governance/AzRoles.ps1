@@ -1,6 +1,6 @@
 #Look at available operations
-Get-AzProviderOperation -OperationSearchString "Microsoft.Compute/*"
 Get-AzProviderOperation -OperationSearchString "Microsoft.Compute/virtualMachines/*/action" | ft Operation, OperationName
+Get-AzProviderOperation -OperationSearchString "Microsoft.Compute/*"
 Get-AzProviderOperation -OperationSearchString "Microsoft.Network/*"
 Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*"
 
